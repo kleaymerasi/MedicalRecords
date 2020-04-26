@@ -1,4 +1,4 @@
-package net.codejava.spring.model;
+package medical.records.base.model;
 
 
 public class Patient {

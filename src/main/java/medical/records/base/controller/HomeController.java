@@ -41,11 +41,13 @@ public class HomeController {
         patientDAO.save(patient);
         return new ModelAndView("redirect:/");
     }
+
     @RequestMapping(value = "/updatePatient", method = RequestMethod.POST)
     public ModelAndView updatePatient(@ModelAttribute Patient patient) {
         patientDAO.update(patient);
         return new ModelAndView("redirect:/");
     }
+
     @RequestMapping(value = "/deletePatient", method = RequestMethod.GET)
     public ModelAndView deletePatient(HttpServletRequest request) {
         int patientId = Integer.parseInt(request.getParameter("id"));

@@ -18,27 +18,26 @@ public class PatientDAOImpl implements PatientDAO {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-
     public List<Patient> findAll() {
         String sql = "SELECT * FROM patient";
-        List<Patient> patient = jdbcTemplate.query(sql, new PatientMapper());
-        return patient;
+        return  jdbcTemplate.query(sql, new PatientMapper());
     }
 
     @Override
     public void save(Patient patient) {
-        if (patient.getId() > 0) {
-            String sql = "INSERT INTO patient (first_name, last_name, address,city) VALUES (:name, :lastname, :address,:city)";
+         String sql = "INSERT INTO patient (first_name, last_name, address,city) VALUES (:name, :lastname, :address,:city)";
             BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(patient);
             template.update(sql, paramSource);
         }
-    }
+
 
     @Override
     public void update(Patient patient) {
-        String sql = "INSERT INTO patient (first_name, last_name, address,city) VALUES (:name, :lastname, :address,:city)";
-        BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(patient);
-        template.update(sql, paramSource);
+        if (patient.getId() > 0) {
+            String sql = "UPDATE patient SET first_name=:first_name,last_name=:last_name , address=:address , city=:city  where id=:id";
+            BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(patient);
+            template.update(sql, paramSource);
+        }
     }
 
     @Override
@@ -49,7 +48,7 @@ public class PatientDAOImpl implements PatientDAO {
 
     @Override
     public Patient get(int patientId) {
-        String sql = "SELECT * FROM patient WHERE Id=" + patientId;
+        String sql = "SELECT * FROM patient WHERE id=" + patientId;
         return jdbcTemplate.query(sql, rs -> {
             if (rs.next()) {
                 Patient patient = new Patient();
@@ -60,10 +59,7 @@ public class PatientDAOImpl implements PatientDAO {
                 patient.setLastName(rs.getString("last_name"));
                 return patient;
             }
-
             return null;
         });
     }
-
-
 }

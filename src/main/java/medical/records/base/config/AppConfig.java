@@ -14,13 +14,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 
-
 @Configuration
 @ComponentScan(basePackages = "medical.records.base")
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
     public static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-    public static final String DB_URL = "jdbc:mariadb://localhost:3306/first";
+    public static final String DB_URL = "jdbc:mariadb://localhost:3306/mr";
     public static final String USER = "root";
     public static final String PASS = "root";
 
@@ -47,7 +46,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
         return dataSource;
     }
-
     @Bean
     public PatientDAO getPatientDAO() {
         return new PatientDAOImpl(getDataSource());

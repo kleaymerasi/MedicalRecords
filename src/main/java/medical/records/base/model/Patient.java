@@ -1,15 +1,13 @@
 package medical.records.base.model;
 
-
-public class Patient {
+    public class Patient {
     private int id;
     private String name;
     private String lastName;
     private String address;
     private String city;
 
-    public Patient() {
-    }
+    public Patient() {}
 
     public Patient(String name, String lastName, String address, int id, String city) {
         this.name = name;

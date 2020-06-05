@@ -1,7 +1,6 @@
 package medical.records.base.config;
 
-import medical.records.base.DAO.PatientDAO;
-import medical.records.base.DAO.PatientDAOImpl;
+import medical.records.base.DAO.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -43,14 +41,22 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         dataSource.setUrl(DB_URL);
         dataSource.setUsername(USER);
         dataSource.setPassword(PASS);
-
         return dataSource;
     }
+
     @Bean
     public PatientDAO getPatientDAO() {
         return new PatientDAOImpl(getDataSource());
     }
-}
 
+    @Bean
+    public DoctorDAO getDoctorDAO() {
+        return new DoctorDAOImpl(getDataSource());
+    }
+    @Bean
+    public SupervisionDAO getSupervisionDAO(){
+        return new SupervisionDAOImpl(getDataSource());
+    }
+}
 
 

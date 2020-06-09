@@ -1,7 +1,7 @@
-package net.codejava.spring.config;
+package medical.records.base.config;
 
-import net.codejava.spring.DAO.PatientDAO;
-import net.codejava.spring.DAO.PatientImpl;
+import medical.records.base.DAO.PatientDAO;
+import medical.records.base.DAO.PatientDAOImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +14,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 
-
 @Configuration
-@ComponentScan(basePackages = "net.codejava.spring")
+@ComponentScan(basePackages = "medical.records.base")
 @EnableWebMvc
-public class MvcConfig extends WebMvcConfigurerAdapter {
+public class AppConfig extends WebMvcConfigurerAdapter {
+    public static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
+    public static final String DB_URL = "jdbc:mariadb://localhost:3306/mr";
+    public static final String USER = "root";
+    public static final String PASS = "root";
 
     @Bean
     public ViewResolver getViewResolver() {
@@ -36,17 +39,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        dataSource.setUrl("jdbc:mariadb://localhost:3306/first");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
+        dataSource.setDriverClassName(JDBC_DRIVER);
+        dataSource.setUrl(DB_URL);
+        dataSource.setUsername(USER);
+        dataSource.setPassword(PASS);
 
         return dataSource;
     }
-
     @Bean
     public PatientDAO getPatientDAO() {
-        return new PatientImpl(getDataSource());
+        return new PatientDAOImpl(getDataSource());
     }
 }
 

@@ -18,7 +18,8 @@
     <h1>Edit Patient :</h1>
     <div class="card">
         <div class="card-body">
-            <form:form action="savePatient" method="post" modelAttribute="patient">
+            <%--@elvariable id="patient" type=""--%>
+            <form:form action="savePatient" method="post" modelAttribute="patient"> 
 
             <div class="form-group row">
                 <%--@declare id="name"--%><label for="name" class="col-sm-2 col-form-label">First

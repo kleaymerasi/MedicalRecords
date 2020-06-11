@@ -51,27 +51,19 @@
     </script>
 </head>
 <body style="background-color:#FAFAFA ;">
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a  class="navbar-brand">KLEA Hospital</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav">
-            <a href="${pageContext.request.contextPath}/" class="nav-item nav-link" > <i class="fas fa-home"></i> Home</a>
-             <a href="Patient" class="nav-item nav-link"><i class="fas fa-hospital-user"> </i> Patient</a>
-            <a href="Doctor" class="nav-item nav-link"><i class="fas fa-user-md"> </i> Doctor</a>
-            <a href="Supervision" class="nav-item nav-link"><i class="fas fa-user-md"> </i> Supervision</a>
-
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a href="https://goo.gl/maps/VcfEPiai4eR5Up3k6" class="nav-item nav-link"><strong>Contact</strong></a>
-        </div>
+<nav class="navbar navbar-light" style="background-color:  #cce6ff;">
+    <a class="navbar-brand">KLEA Hospital</a>
+    <a href="${pageContext.request.contextPath}/" class="nav-item nav-link">Home</a>
+    <a href="Patient" class="nav-item nav-link"> Patient</a>
+    <a href="Doctor" class="nav-item nav-link"> Doctor </a>
+    <a href="Supervision" class="nav-item nav-link"><strong>Supervision</strong></a>
+    <div class="navbar-nav ml-auto">
+        <a href="https://goo.gl/maps/VcfEPiai4eR5Up3k6" class="nav-item nav-link"><strong>Contact</strong></a>
     </div>
+
 </nav>
 <div class="container -color:#FAFAFA ;">
-    <h2>Edit Supervision</h2>
+     <br> <h2 style="color: slategrey">Edit Supervision</h2> <br>
     <div class="card" style="background-color:#FAFAFA ; ">
         <div class="card-body">
             <form:form action="saveSupervision" method="post" modelAttribute="supervision">

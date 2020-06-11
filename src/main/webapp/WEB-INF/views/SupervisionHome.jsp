@@ -6,45 +6,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/07ac43e54b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 </head>
 <body style="background-color:#FAFAFA ;">
 
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a  class="navbar-brand">KLEA Hospital</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav">
-            <a href="${pageContext.request.contextPath}/" class="nav-item nav-link" > <i class="fas fa-home"></i> Home</a>
-            <a href="Patient" class="nav-item nav-link"><i class="fas fa-hospital-user"> </i> Patient</a>
-            <a href="Doctor" class="nav-item nav-link"><i class="fas fa-user-md"> </i> Doctor</a>
-            <a href="Supervision" class="nav-item nav-link"><i class="fas fa-user-md"> </i> Supervision</a>
-
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a href="https://goo.gl/maps/VcfEPiai4eR5Up3k6" class="nav-item nav-link"><strong>Contact</strong></a>
-        </div>
+<nav class="navbar navbar-light" style="background-color:  #cce6ff;">
+    <a class="navbar-brand">KLEA Hospital</a>
+    <a href="${pageContext.request.contextPath}/" class="nav-item nav-link"> Home</a>
+    <a href="Patient" class="nav-item nav-link">  Patient</a>
+    <a href="Doctor" class="nav-item nav-link"> Doctor </a>
+    <a href="Supervision" class="nav-item nav-link"><strong>Supervision</strong></a>
+    <div class="navbar-nav ml-auto">
+        <a href="https://goo.gl/maps/VcfEPiai4eR5Up3k6" class="nav-item nav-link"><strong>Contact</strong></a>
     </div>
+
 </nav>
 
 <div class="container">
-    <h2>Supervision List</h2>
+    <br>
+    <h2 style="color: slategrey">Supervision List</h2><br>
 
-    <table class="table table-bordered">
+    <table id="table2" class="table table-bordered" style="width:100%">
         <thead>
         <tr>
-            <th>No</th>
-            <th>Note</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Patient Id</th>
-            <th>Doctor Id</th>
-            <th>Action</th>
+            <th style="color: slategrey">No</th>
+            <th style="color: slategrey">Note</th>
+            <th style="color: slategrey">Start Date</th>
+            <th style="color: slategrey">End Date</th>
+            <th style="color: slategrey">Patient Id</th>
+            <th style="color: slategrey">Doctor Id</th>
+            <th style="color: slategrey">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -57,9 +53,20 @@
                 <td>${supervision.patientId}</td>
                 <td>${supervision.doctorId}</td>
                 <td>
-                    <a href="editSupervision?id=${supervision.id}">Edit</a>
+
+                    <button type="button" class="btn btn-default btn-sm">
+                        <a href="editSupervision?id=${supervision.id}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </button>
+
+                    &nbsp;<button type="button" class="btn btn-default btn-sm">
+                    <a href="deleteSupervision?id=${supervision.id}">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="deleteSupervision?id=${supervision.id}">Delete</a>
+
                 </td>
             </tr>
 
@@ -67,6 +74,12 @@
 
         </tbody>
     </table>
+    <script>
+
+        $(document).ready(function () {
+            $('#table2').DataTable();
+        });
+    </script>
 </div>
 
 </body>

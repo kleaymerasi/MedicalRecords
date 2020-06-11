@@ -16,27 +16,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 </head>
 <body style="background-color:#FAFAFA ;" >
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a  class="navbar-brand">KLEA Hospital</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav">
-            <a href="${pageContext.request.contextPath}/" class="nav-item nav-link" > <i class="fas fa-home"></i> Home</a>
-            <a href="Patient" class="nav-item nav-link"><i class="fas fa-hospital-user"> </i> Patient</a>
-            <a href="Doctor" class="nav-item nav-link"><i class="fas fa-user-md"> </i> Doctor</a>
-            <a href="Supervision" class="nav-item nav-link"><i class="fas fa-user-md"> </i> Supervision</a>
-
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a href="https://goo.gl/maps/VcfEPiai4eR5Up3k6" class="nav-item nav-link"><strong>Contact</strong></a>
-        </div>
+<nav class="navbar navbar-light" style="background-color:  #cce6ff;">
+    <a class="navbar-brand">KLEA Hospital</a>
+    <a href="${pageContext.request.contextPath}/" class="nav-item nav-link"> Home</a>
+    <a href="Patient" class="nav-item nav-link"><strong>Patient</strong></a>
+    <a href="Doctor" class="nav-item nav-link">Doctor</a>
+    <a href="Supervision" class="nav-item nav-link">Supervision</a>
+    <div class="navbar-nav ml-auto">
+        <a href="https://goo.gl/maps/VcfEPiai4eR5Up3k6" class="nav-item nav-link"><strong>Contact</strong></a>
     </div>
 </nav>
+
 <div class="container">
-    <h1>Edit Patient :</h1>
+     <br> <h2 style="color: slategrey">Edit Patient :</h2> <br>
     <div class="card" style="background-color:#FAFAFA ;">
         <div class="card-body ">
             <%--@elvariable id="patient" type=""--%>
@@ -48,7 +40,7 @@
                     Name</label>
                 <div class="col-sm-7">
                     <label>
-                        <input type="text" class="form-control" name="name" value="${patient.name}"
+                        <input type="text" class="form-control" name="name"  value="${patient.name}"
                                placeholder="Enter first name">
                     </label>
                 </div>
